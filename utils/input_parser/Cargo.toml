@@ -1,5 +1,5 @@
 [package]
-name = "input-parser"
+name = "input_parser"
 version = "0.1.0"
 edition = "2021"
 

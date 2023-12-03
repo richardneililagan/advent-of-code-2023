@@ -3,9 +3,12 @@
 version = 3
 
 [[package]]
-name = "aoc-01"
+name = "aoc_01"
 version = "0.1.0"
+dependencies = [
+ "input_parser",
+]
 
 [[package]]
-name = "input-parser"
+name = "input_parser"
 version = "0.1.0"
