@@ -9,6 +9,10 @@ pub fn parse_input(filepath: &str) -> Vec<String> {
         .collect::<Vec<String>>()
 }
 
+pub fn parse(multiline_input: &str) -> Vec<String> {
+    multiline_input.lines().map(str::to_string).collect()
+}
+
 fn get_input_filepath(filepath: &str) -> path::PathBuf {
     let current_dir = std::env::current_dir().expect("Failed to get current path");
     println!("{}", current_dir.display());

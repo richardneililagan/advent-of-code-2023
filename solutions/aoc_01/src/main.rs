@@ -105,31 +105,32 @@ fn solve_b(lines: Vec<String>) -> u32 {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use indoc::*;
 
     #[test]
     fn it_solves_examples_a() {
-        let input = vec![
-            String::from("1abc2"),
-            String::from("pqr3stu8vwx"),
-            String::from("a1b2c3d4e5f"),
-            String::from("treb7uchet"),
-        ];
+        let input_text = indoc! {"
+            1abc2
+            pqr3stu8vwx
+            a1b2c3d4e5f
+            treb7uchet
+        "};
 
-        assert_eq!(solve_a(input), 142);
+        assert_eq!(solve_a(input_parser::parse(input_text)), 142);
     }
 
     #[test]
     fn it_solves_examples_b() {
-        let input = vec![
-            String::from("two1nine"),
-            String::from("eightwothree"),
-            String::from("abcone2threexyz"),
-            String::from("xtwone3four"),
-            String::from("4nineeightseven2"),
-            String::from("zoneight234"),
-            String::from("7pqrstsixteen"),
-        ];
+        let input_text = indoc! {"
+            two1nine
+            eightwothree
+            abcone2threexyz
+            xtwone3four
+            4nineeightseven2
+            zoneight234
+            7pqrstsixteen
+        "};
 
-        assert_eq!(solve_b(input), 281);
+        assert_eq!(solve_b(input_parser::parse(input_text)), 281);
     }
 }
