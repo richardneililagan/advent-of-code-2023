@@ -73,7 +73,35 @@ fn solve_a(lines: Vec<String>) -> u32 {
     sum
 }
 fn solve_b(lines: Vec<String>) -> u32 {
-    unimplemented!("Not implemented yet.")
+    let re_red = Regex::new(r"(?<count>\d*)\sred").unwrap();
+    let re_green = Regex::new(r"(?<count>\d*)\sgreen").unwrap();
+    let re_blue = Regex::new(r"(?<count>\d*)\sblue").unwrap();
+
+    lines
+        .iter()
+        .map(|line| {
+            let red_draws = re_red.captures_iter(line).map(|caps| {
+                let (_, [count]) = caps.extract();
+                count.parse::<u32>().unwrap()
+            });
+
+            let green_draws = re_green.captures_iter(line).map(|caps| {
+                let (_, [count]) = caps.extract();
+                count.parse::<u32>().unwrap()
+            });
+
+            let blue_draws = re_blue.captures_iter(line).map(|caps| {
+                let (_, [count]) = caps.extract();
+                count.parse::<u32>().unwrap()
+            });
+
+            let min_red = red_draws.max().unwrap_or(0);
+            let min_green = green_draws.max().unwrap_or(0);
+            let min_blue = blue_draws.max().unwrap_or(0);
+
+            min_red * min_green * min_blue
+        })
+        .sum()
 }
 
 #[cfg(test)]
@@ -95,5 +123,22 @@ mod tests {
         ];
 
         assert_eq!(solve_a(input), 8);
+    }
+
+    #[test]
+    fn it_solves_examples_b() {
+        let input = vec![
+            String::from("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"),
+            String::from("Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue"),
+            String::from(
+                "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
+            ),
+            String::from(
+                "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
+            ),
+            String::from("Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"),
+        ];
+
+        assert_eq!(solve_b(input), 2286);
     }
 }
