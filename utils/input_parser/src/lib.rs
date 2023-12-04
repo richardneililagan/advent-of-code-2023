@@ -4,7 +4,7 @@ use std::path;
 pub fn parse_input(filepath: &str) -> Vec<String> {
     fs::read_to_string(get_input_filepath(filepath))
         .expect("Something went wrong reading the file")
-        .split_whitespace()
+        .lines()
         .map(str::to_string)
         .collect::<Vec<String>>()
 }

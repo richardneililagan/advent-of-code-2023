@@ -3,5 +3,6 @@
 resolver = "2"
 members = [
   "solutions/aoc_01",
+  "solutions/aoc_02",
   "utils/input_parser"
 ]
