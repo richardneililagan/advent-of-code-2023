@@ -41,7 +41,7 @@ fn solve_a(lines: Vec<String>) -> u32 {
                     .map(|number| number.parse::<u32>().unwrap())
                     .collect::<Vec<u32>>()
             })
-            .collect::<Vec<Vec<u32>>>();
+            .collect::<Vec<_>>();
 
         let [winning_numbers, numbers] = &c[..] else {
             unreachable!("Something went wrong.")
@@ -69,9 +69,9 @@ fn solve_b(lines: Vec<String>) -> u32 {
                 numbers
                     .split_whitespace()
                     .map(|number| number.parse::<u32>().unwrap())
-                    .collect::<Vec<u32>>()
+                    .collect::<Vec<_>>()
             })
-            .collect::<Vec<Vec<u32>>>();
+            .collect::<Vec<_>>();
 
         let [winning_numbers, numbers] = &c[..] else {
             unreachable!("Something went wrong.")
